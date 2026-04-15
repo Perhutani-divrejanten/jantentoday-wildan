@@ -1,0 +1,9 @@
+if (Test-Path 'd:\Magang\Perhutani\JantenToday\package.json') {
+    `$content = Get-Content 'd:\Magang\Perhutani\JantenToday\package.json' -Raw -Encoding UTF8
+    `$new_content = `$content.Replace('warta-jabar-generator', 'jantentoday-generator').Replace('Warta Jabar', 'JantenToday').Replace('Warta Janten', 'JantenToday')
+    if (`$content -ne `$new_content) {
+        `$files_updated++
+        Set-Content -Path 'd:\Magang\Perhutani\JantenToday\package.json' -Value `$new_content -Encoding UTF8
+        `$update_log += 'package.json'
+    }
+}
